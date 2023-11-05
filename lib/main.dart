@@ -12,7 +12,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  List<Widget> WidgetAgung = [];
+  List<Widget> WidgeArya = [];
   static const TEXT_STYLE_NORMAL = const TextStyle(
       color: Colors.blue, fontSize: 18, fontWeight: FontWeight.normal);
 
@@ -156,31 +156,17 @@ class _MyAppState extends State<MyApp> {
               trailing: Icon(Icons.settings),
               onTap: () => select(0),
             )),
-            (SwitchListTile(
+            (ListTile(
+              leading: Icon(Icons.signal_cellular_4_bar_rounded),
               title: Text(
-                "Accessibility",
+                "Data",
                 style: _selectedinbox == 1
-                    ? TextStyle(
-                        color: Colors
-                            .red, // Mengatur warna teks menjadi merah saat Switch aktif
-                        // Atur atribut teks lainnya sesuai kebutuhan
-                      )
-                    : TextStyle(
-                        color: Colors
-                            .black, // Atur warna teks sesuai kebutuhan ketika Switch non-aktif
-                        // Atur atribut teks lainnya sesuai kebutuhan
-                      ),
+                    ? TEXT_STYLE_SELECTED
+                    : TEXT_STYLE_NORMAL,
               ),
-              subtitle: Text("Accessibility Setting"),
-              secondary: Icon(Icons.accessibility_new_rounded),
-              value: _selectedinbox == 1, // Gunakan nilai sesuai keadaan Anda
-              onChanged: (bool newValue) {
-                if (newValue) {
-                  select(1);
-                } else {
-                  // Handle jika switch dimatikan
-                }
-              },
+              subtitle: Text("History Setting"),
+              trailing: Icon(Icons.settings),
+              onTap: () => select(0),
             )),
           ],
         ),
