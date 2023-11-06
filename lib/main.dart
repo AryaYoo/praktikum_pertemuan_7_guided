@@ -12,17 +12,29 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  List<Widget> WidgeArya = [];
-  static const TEXT_STYLE_NORMAL = const TextStyle(
-      color: Colors.blue, fontSize: 18, fontWeight: FontWeight.normal);
+  Map<int, bool?> buttonStatus = {1: false, 2: false};
 
-  static const TEXT_STYLE_SELECTED = const TextStyle(
-      color: Colors.blue, fontSize: 18, fontWeight: FontWeight.normal);
+  // Daftar gaya teks
+  final TextStyle TEXT_STYLE_NORMAL = TextStyle(
+    color: Colors.blue,
+    fontSize: 18,
+    fontWeight: FontWeight.normal,
+  );
 
-  int _selectedinbox = 1;
-  select(index) {
+  final TextStyle TEXT_STYLE_SELECTED = TextStyle(
+    color: Color.fromARGB(255, 243, 191, 33),
+    fontSize: 18,
+    fontWeight: FontWeight.normal,
+  );
+
+  void select(int index) {
     setState(() {
-      _selectedinbox = index;
+      // Toggle status warna tombol
+      if (buttonStatus[index] != null) {
+        buttonStatus[index] = !buttonStatus[index]!;
+      } else {
+        buttonStatus[index] = true;
+      }
     });
   }
 
@@ -36,143 +48,189 @@ class _MyAppState extends State<MyApp> {
         ),
         body: ListView(
           children: [
-            (ListTile(
-              leading: Icon(Icons.accessibility_new_rounded),
+            ListTile(
+              leading: Icon(Icons.info),
               title: Text(
-                "Accessibility",
-                style: _selectedinbox == 1
+                "About",
+                style: buttonStatus[1] == true
                     ? TEXT_STYLE_SELECTED
                     : TEXT_STYLE_NORMAL,
               ),
-              subtitle: Text("Accesibility Setting"),
+              subtitle: Text("View About"),
               trailing: Icon(Icons.settings),
-              onTap: () => select(0),
-            )),
-            (ListTile(
+              onTap: () => select(1),
+            ),
+            ListTile(
               leading: Icon(Icons.history_outlined),
               title: Text(
                 "History",
-                style: _selectedinbox == 1
+                style: buttonStatus[2] == true
                     ? TEXT_STYLE_SELECTED
                     : TEXT_STYLE_NORMAL,
               ),
               subtitle: Text("History Setting"),
               trailing: Icon(Icons.settings),
-              onTap: () => select(0),
-            )),
-            (ListTile(
+              onTap: () => select(2),
+            ),
+            ListTile(
+              leading: Icon(Icons.call),
+              title: Text(
+                "Call",
+                style: buttonStatus[3] == true
+                    ? TEXT_STYLE_SELECTED
+                    : TEXT_STYLE_NORMAL,
+              ),
+              subtitle: Text("Call Setting"),
+              trailing: Icon(Icons.settings),
+              onTap: () => select(3),
+            ),
+            ListTile(
+              leading: Icon(Icons.contact_page),
+              title: Text(
+                "Contact",
+                style: buttonStatus[4] == true
+                    ? TEXT_STYLE_SELECTED
+                    : TEXT_STYLE_NORMAL,
+              ),
+              subtitle: Text("ContactSetting"),
+              trailing: Icon(Icons.settings),
+              onTap: () => select(4),
+            ),
+            ListTile(
+              leading: Icon(Icons.mail),
+              title: Text(
+                "Message",
+                style: buttonStatus[5] == true
+                    ? TEXT_STYLE_SELECTED
+                    : TEXT_STYLE_NORMAL,
+              ),
+              subtitle: Text("Message Setting"),
+              trailing: Icon(Icons.settings),
+              onTap: () => select(5),
+            ),
+            ListTile(
               leading: Icon(Icons.wifi),
               title: Text(
-                "wifi",
-                style: _selectedinbox == 1
+                "Wifi",
+                style: buttonStatus[6] == true
                     ? TEXT_STYLE_SELECTED
                     : TEXT_STYLE_NORMAL,
               ),
-              subtitle: Text("History Setting"),
+              subtitle: Text("Wifi Connection"),
               trailing: Icon(Icons.settings),
-              onTap: () => select(0),
-            )),
-            (ListTile(
-              leading: Icon(Icons.notification_add),
+              onTap: () => select(6),
+            ),
+            ListTile(
+              leading: Icon(Icons.signal_cellular_alt),
               title: Text(
-                "Notification",
-                style: _selectedinbox == 1
+                "Data",
+                style: buttonStatus[7] == true
                     ? TEXT_STYLE_SELECTED
                     : TEXT_STYLE_NORMAL,
               ),
-              subtitle: Text("History Setting"),
+              subtitle: Text("Manage Data"),
               trailing: Icon(Icons.settings),
-              onTap: () => select(0),
-            )),
-            (ListTile(
-              leading: Icon(Icons.phone_android),
+              onTap: () => select(7),
+            ),
+            ListTile(
+              leading: Icon(Icons.gps_fixed),
               title: Text(
-                "Panel",
-                style: _selectedinbox == 1
+                "GPS",
+                style: buttonStatus[8] == true
                     ? TEXT_STYLE_SELECTED
                     : TEXT_STYLE_NORMAL,
               ),
-              subtitle: Text("History Setting"),
+              subtitle: Text("GPS Setting"),
               trailing: Icon(Icons.settings),
-              onTap: () => select(0),
-            )),
-            (ListTile(
-              leading: Icon(Icons.volume_down_alt),
-              title: Text(
-                "Sound",
-                style: _selectedinbox == 1
-                    ? TEXT_STYLE_SELECTED
-                    : TEXT_STYLE_NORMAL,
-              ),
-              subtitle: Text("History Setting"),
-              trailing: Icon(Icons.settings),
-              onTap: () => select(0),
-            )),
-            (ListTile(
+              onTap: () => select(8),
+            ),
+            ListTile(
               leading: Icon(Icons.wallpaper),
               title: Text(
-                "Wallpaper",
-                style: _selectedinbox == 1
+                "Theme",
+                style: buttonStatus[9] == true
                     ? TEXT_STYLE_SELECTED
                     : TEXT_STYLE_NORMAL,
               ),
-              subtitle: Text("History Setting"),
+              subtitle: Text("Theme Setting"),
               trailing: Icon(Icons.settings),
-              onTap: () => select(0),
-            )),
-            (ListTile(
-              leading: Icon(Icons.alarm),
+              onTap: () => select(9),
+            ),
+            ListTile(
+              leading: Icon(Icons.wifi_find),
               title: Text(
-                "Alarm",
-                style: _selectedinbox == 1
+                "Wifi Find",
+                style: buttonStatus[10] == true
                     ? TEXT_STYLE_SELECTED
                     : TEXT_STYLE_NORMAL,
               ),
-              subtitle: Text("History Setting"),
+              subtitle: Text("Wifi Find Setting"),
               trailing: Icon(Icons.settings),
-              onTap: () => select(0),
-            )),
-            (ListTile(
-              leading: Icon(Icons.bluetooth),
+              onTap: () => select(10),
+            ),
+            ListTile(
+              leading: Icon(Icons.privacy_tip_rounded),
               title: Text(
-                "Bluetooth",
-                style: _selectedinbox == 1
+                "Privacy",
+                style: buttonStatus[11] == true
                     ? TEXT_STYLE_SELECTED
                     : TEXT_STYLE_NORMAL,
               ),
-              subtitle: Text("History Setting"),
+              subtitle: Text("User Privacy"),
               trailing: Icon(Icons.settings),
-              onTap: () => select(0),
-            )),
-            (ListTile(
-              leading: Icon(Icons.signal_cellular_4_bar_rounded),
+              onTap: () => select(11),
+            ),
+            ListTile(
+              leading: Icon(Icons.volume_off_outlined),
               title: Text(
-                "Data",
-                style: _selectedinbox == 1
+                "Volume",
+                style: buttonStatus[12] == true
                     ? TEXT_STYLE_SELECTED
                     : TEXT_STYLE_NORMAL,
               ),
-              subtitle: Text("History Setting"),
+              subtitle: Text("Volume Setting"),
               trailing: Icon(Icons.settings),
-              onTap: () => select(0),
-            )),
-            (ListTile(
-              leading: Icon(Icons.signal_cellular_4_bar_rounded),
+              onTap: () => select(12),
+            ),
+            ListTile(
+              leading: Icon(Icons.video_call),
               title: Text(
-                "Data",
-                style: _selectedinbox == 1
+                "Video",
+                style: buttonStatus[13] == true
                     ? TEXT_STYLE_SELECTED
                     : TEXT_STYLE_NORMAL,
               ),
-              subtitle: Text("History Setting"),
+              subtitle: Text("Video Setting"),
               trailing: Icon(Icons.settings),
-              onTap: () => select(0),
-            )),
+              onTap: () => select(13),
+            ),
+            ListTile(
+              leading: Icon(Icons.file_copy),
+              title: Text(
+                "File",
+                style: buttonStatus[14] == true
+                    ? TEXT_STYLE_SELECTED
+                    : TEXT_STYLE_NORMAL,
+              ),
+              subtitle: Text("File User Setting"),
+              trailing: Icon(Icons.settings),
+              onTap: () => select(14),
+            ),
+            ListTile(
+              leading: Icon(Icons.folder),
+              title: Text(
+                "Folder",
+                style: buttonStatus[15] == true
+                    ? TEXT_STYLE_SELECTED
+                    : TEXT_STYLE_NORMAL,
+              ),
+              subtitle: Text("User Folder"),
+              trailing: Icon(Icons.settings),
+              onTap: () => select(15),
+            ),
           ],
         ),
       ),
     );
   }
 }
-
-
